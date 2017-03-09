@@ -22,20 +22,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    menuShowing = false;
-    _vWMenuView.layer.shadowOpacity = 1;
     
+    menuShowing = false; 
+    
+    //adding drop shadow
+    _vWMenuView.layer.shadowOpacity = 1;
     _vWMenuView.layer.shadowRadius = 5;
     
-    NSArray *myarray = [NSArray arrayWithObjects:@"One",@"Two",@"Three", nil];
-    
-    [myarray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSLog(@"object at index %lu is %@",(unsigned long)idx,obj);
-    }];
+
 }
 
 - (IBAction)openMenu:(id)sender {
     
+    //changing leading constraint of the sliderView
     if(menuShowing){
     _cSLeadingConstarint.constant = -266;
     }else{
@@ -44,6 +43,8 @@
     }
     menuShowing = !menuShowing;
     
+    
+    //layoutIfNeeded is animatable, henced used here
     [UIView animateWithDuration:0.3
                      animations:^{
                          [self.view layoutIfNeeded]; // Called on parent view
